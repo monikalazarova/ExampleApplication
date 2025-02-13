@@ -12,11 +12,16 @@ workflows:
 
 jobs:
   build:
-    working_directory: ~/ExampleApplication
+    working_directory: /home/circleci/ExampleApplication/ExampleApplication
     docker:
       - image: circleci/node:10.16.3
     steps:
       - checkout
+      - run:
+        name: Verify working directory
+        command:
+          pwd
+          ls -a
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@5'
